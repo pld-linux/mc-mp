@@ -55,10 +55,14 @@ mniejszy i posiada wiêcej opcji.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc/shrc.d
 
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
-(cd icons; make prefix=$RPM_BUILD_ROOT%{_prefix} install_icons)
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	mandir=%{_mandir}/man1 \
+	man8dir=%{_mandir}/man8
 
-install lib/mc.{,c]sh $RPM_BUILD_ROOT/etc/shrc.d
+#(cd icons; make prefix=$RPM_BUILD_ROOT%{_prefix} install_icons)
+
+install lib/mc.{,c}sh $RPM_BUILD_ROOT/etc/shrc.d
 
 rm -f $RPM_BUILD_ROOT%{_prefix}/lib/mc/FAQ
 
