@@ -19,6 +19,7 @@ Source0:	http://mc.linuxinside.com/Releases/mc-%{version}-%{pre}.tar.bz2
 URL:		http://mc.linuxinside.com/
 %{?with_x:BuildRequires:	XFree86-devel}
 BuildRequires:	autoconf
+BuildRequires:	automake
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel >= 1.35}
 BuildRequires:	gettext-devel
 BuildRequires:	gpm-devel
