@@ -6,16 +6,15 @@
 # TODO:
 #	- don't obsolete mc
 #
+%define	pre 	pre9
+# Source0-md5:	9335f2b131ecf352c2c0e55a477a1c49
 Summary:	Tweaked Midnight Commander
 Summary(pl):	Podrasowany Midnight Commander
 Name:		mc-mp
-%define	pre 	pre9
 Version:	4.1.40
-Release:	0.%{pre}.1
-License:	GPL
+Release:	0.%{pre}.3
+License:	GPL v2
 Group:		Applications/Shells
-Source0:	http://mc.linuxinside.com/Releases/mc-%{version}-%{pre}.tar.bz2
-# Source0-md5:	9335f2b131ecf352c2c0e55a477a1c49
 URL:		http://mc.linuxinside.com/
 %{?with_x:BuildRequires:	XFree86-devel}
 BuildRequires:	autoconf
@@ -23,7 +22,8 @@ BuildRequires:	automake
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel >= 1.35}
 BuildRequires:	gettext-devel
 BuildRequires:	gpm-devel
-Obsoletes:	mc
+Source0:	http://mc.linuxinside.com/Releases/mc-%{version}-%{pre}.tar.bz2
+Conflicts:	mc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,8 +38,8 @@ mniejszy i posiada wiêcej opcji.
 %setup -q -n mc-%{version}-%{pre}
 
 %build
-%{__aclocal}
-%configure \
+#%{__aclocal}
+./mc.configure \
 	%{?with_debug:--with-debug --with-efence} \
 	--with%{!?with_ext2undel:out}-ext2undel \
 	--with%{!?with_x:out}-x \
@@ -51,6 +51,7 @@ mniejszy i posiada wiêcej opcji.
 	--with-subshell \
 	--with-terminfo
 %{__make}
+#%find_lang %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -73,16 +74,40 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc FAQ
-%attr(755,root,root) %{_bindir}/mc
-%attr(755,root,root) %{_bindir}/mcedit
-%attr(755,root,root) %{_bindir}/mcmfmt
+%attr(755,root,root) %{_bindir}/*
+%dir %{_libdir}/mc
 %{_libdir}/mc/mc.*
-%attr(755,root,root) %{_prefix}/lib/mc/bin/cons.saver
-%attr(755,root,root) %{_prefix}/lib/mc/extfs/*
-%{_mandir}/man1/mc.1
-%{_mandir}/man1/mcedit.1
+%dir %{_libdir}/mc/bin
+%attr(755,root,root) %{_libdir}/mc/bin/*
+%dir %{_libdir}/mc/extfs
+%{_libdir}/mc/extfs/extfs.ini
+%attr(755,root,root) %{_libdir}/mc/extfs/rpm
+%attr(755,root,root) %{_libdir}/mc/extfs/a
+%attr(755,root,root) %{_libdir}/mc/extfs/audio
+%attr(755,root,root) %{_libdir}/mc/extfs/deb
+%attr(755,root,root) %{_libdir}/mc/extfs/hp48
+%attr(755,root,root) %{_libdir}/mc/extfs/lha
+%attr(755,root,root) %{_libdir}/mc/extfs/mailfs
+%attr(755,root,root) %{_libdir}/mc/extfs/rar
+%attr(755,root,root) %{_libdir}/mc/extfs/uarj
+%attr(755,root,root) %{_libdir}/mc/extfs/zip
+%attr(755,root,root) %{_libdir}/mc/extfs/arfs
+%attr(755,root,root) %{_libdir}/mc/extfs/cpio
+%attr(755,root,root) %{_libdir}/mc/extfs/esp
+%attr(755,root,root) %{_libdir}/mc/extfs/ftplist
+%attr(755,root,root) %{_libdir}/mc/extfs/iso
+%attr(755,root,root) %{_libdir}/mc/extfs/lslR
+%attr(755,root,root) %{_libdir}/mc/extfs/patchfs
+%attr(755,root,root) %{_libdir}/mc/extfs/trpm
+%attr(755,root,root) %{_libdir}/mc/extfs/uha
+%attr(755,root,root) %{_libdir}/mc/extfs/zoo
+%dir %{_libdir}/mc/syntax
+%{_libdir}/mc/syntax/*
+%dir %{_libdir}/mc/term
+%{_libdir}/mc/term/*
+%dir %{_libdir}/mc/codepages
+%{_libdir}/mc/codepages/*
+%{_mandir}/man1/*
+%{_mandir}/man8/*
 %attr(755,root,root) %config /etc/shrc.d/mc.sh
 %attr(755,root,root) %config /etc/shrc.d/mc.csh
-%attr(755,root,root) %dir %{_prefix}/lib/mc/
-%attr(755,root,root) %dir %{_prefix}/lib/mc/bin
-%attr(755,root,root) %dir %{_prefix}/lib/mc/extfs
