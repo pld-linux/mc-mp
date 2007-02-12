@@ -9,7 +9,7 @@
 %define	pre 	pre9
 # Source0-md5:	9335f2b131ecf352c2c0e55a477a1c49
 Summary:	Tweaked Midnight Commander
-Summary(pl):	Podrasowany Midnight Commander
+Summary(pl.UTF-8):   Podrasowany Midnight Commander
 Name:		mc-mp
 Version:	4.1.40
 Release:	0.%{pre}.3
@@ -30,9 +30,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 It's a tweaked version of popular GNU Midnight Commander. It's smaller
 and more feature rich.
 
-%description -l pl
+%description -l pl.UTF-8
 Jest to tuningowana wersja popularnego GNU Midnight Commandera. Jest
-mniejszy i posiada wiêcej opcji.
+mniejszy i posiada wiÄ™cej opcji.
 
 %prep
 %setup -q -n mc-%{version}-%{pre}
