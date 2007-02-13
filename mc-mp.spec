@@ -9,7 +9,7 @@
 %define	pre 	pre9
 # Source0-md5:	9335f2b131ecf352c2c0e55a477a1c49
 Summary:	Tweaked Midnight Commander
-Summary(pl.UTF-8):   Podrasowany Midnight Commander
+Summary(pl.UTF-8):	Podrasowany Midnight Commander
 Name:		mc-mp
 Version:	4.1.40
 Release:	0.%{pre}.3
