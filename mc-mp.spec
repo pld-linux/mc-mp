@@ -7,7 +7,6 @@
 #	- don't obsolete mc
 #
 %define	pre 	pre9
-# Source0-md5:	9335f2b131ecf352c2c0e55a477a1c49
 Summary:	Tweaked Midnight Commander
 Summary(pl.UTF-8):	Podrasowany Midnight Commander
 Name:		mc-mp
@@ -15,6 +14,8 @@ Version:	4.1.40
 Release:	0.%{pre}.3
 License:	GPL v2
 Group:		Applications/Shells
+Source0:	http://mc.linuxinside.com/Releases/mc-%{version}-%{pre}.tar.bz2
+# Source0-md5:	9335f2b131ecf352c2c0e55a477a1c49
 URL:		http://mc.linuxinside.com/
 %{?with_x:BuildRequires:	XFree86-devel}
 BuildRequires:	autoconf
@@ -22,7 +23,6 @@ BuildRequires:	automake
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel >= 1.35}
 BuildRequires:	gettext-devel
 BuildRequires:	gpm-devel
-Source0:	http://mc.linuxinside.com/Releases/mc-%{version}-%{pre}.tar.bz2
 Conflicts:	mc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
