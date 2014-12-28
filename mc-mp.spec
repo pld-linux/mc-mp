@@ -21,7 +21,7 @@ URL:		http://mc.linuxinside.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel >= 1.35}
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gpm-devel
 Conflicts:	mc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
